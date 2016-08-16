@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorator="layout/LayoutPadrao">
+
+<head>
+<title>Listar Usuario</title>
+</head>
+
+<body>
+	<section layout:fragment="slide">
+		<div class="page-header">
+			<h1>
+				<small>Gerenciar Usuário</small>
+			</h1>
+		</div>
+	</section>
+
+	<section layout:fragment="conteudo">
+
+		<div class="panel panel-default">
+			<!-- Table -->
+			<table class="table table-bordered table-striped" >
+				<tr>
+					<th>Nome do usuário</th>
+					<th>Data de Nasicmento</th>
+					<th>Email</th>
+					<th>Ações</th>
+				</tr>
+				<tr th:each="usuario: ${usuarios}">
+					<td th:text="${usuario.nome}">Jill</td>
+					<td th:data="${usuario.dataNascimento}" >22/05/2015</td>
+					<td th:text="${usuario.login.nomeUsuario}">teste@gmail.com</td>
+					<td>
+						<div class="btn-group" role="group" aria-label="...">
+							<button type="button" class="btn btn-default">Editar</button>
+							<button type="button" class="btn btn-default">Excluir</button>
+						</div>
+					</td>
+
+				</tr>
+				<tr th:if="${usuarios.empty}">
+						<td colspan="6">Nenhum usuário cadastrado</td>
+					</tr>
+				<tr>
+					<td>Jill</td>
+					<td>22/05/2015</td>
+					<td>teste@gmail.com</td>
+					<td>
+						<div class="btn-group" role="group" aria-label="...">
+							<button type="button" class="btn btn-default">Editar</button>
+							<button type="button" class="btn btn-default">Excluir</button>
+						</div>
+					</td>
+
+				</tr>
+			</table>
+		</div>
+
+	</section>
+</body>
+</html>
