@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	layout:decorator="layout/LayoutPadrao">
 
 <head>
-	<title>Listar Usuario</title>
+<title>Listar Usuario</title>
 </head>
 
 <body>
-<input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}"/>
-<input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
-
+	<section layout:fragment="header"></section>
+	<section layout:fragment="conteudo"></section>
 </body>
 </html>
