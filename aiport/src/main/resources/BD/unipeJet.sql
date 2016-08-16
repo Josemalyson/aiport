@@ -1,0 +1,16 @@
+use unipejet;
+INSERT INTO tb_jet_perfil_usuario VALUES (1,'admin');
+INSERT INTO tb_jet_perfil_usuario VALUES (2,'publico');
+INSERT INTO tb_jet_tipo_documento VALUES (1,'Registro Geral','RG');
+INSERT INTO tb_jet_tipo_documento VALUES (2,'Cadastro de pessoa física','CPF');
+INSERT INTO tb_jet_cidade VALUES (1,'João Pessoa','JPA');
+INSERT INTO tb_jet_cidade VALUES (2,'Recife','REC');
+INSERT INTO tb_jet_cidade VALUES (3,'Fortaleza','FOR');
+INSERT INTO tb_jet_cidade VALUES (4,'São Paulo','SPA');
+INSERT INTO tb_jet_cidade VALUES (5,'Aracaju','ARA');
+INSERT INTO tb_jet_cidade VALUES (6,'Rio de Janeiro','RIO');
+INSERT INTO tb_jet_cidade VALUES (7,'Porto Alegre','PTA');
+INSERT INTO tb_jet_cartao_milhas VALUES (1,'1',0);
+INSERT INTO tb_jet_login VALUES (1,'admin','$shiro1$SHA-256$500000$ZXWiugMUMaJGYn7rRXCqHw==$ozvFio1RHqG/YZmjP/I7W246x2CKZBGwcZzsvT48N1w=');
+INSERT INTO tb_jet_usuario VALUES ('1', sysdate(), 'jose', '12345679', '1', '1', '1', '1');
+COMMIT;

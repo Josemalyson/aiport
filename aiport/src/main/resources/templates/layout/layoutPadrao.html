@@ -14,7 +14,8 @@
 <meta name="keyword" content="html, css, bootstrap, job-board" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link rel="stylesheet" type="text/css" th:href="@{/layout/css/google.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/layout/css/google.css}" />
 
 <link rel="shortcut icon" href="@{/layout/icon/favicon.ico}"
 	type="image/x-icon" />
@@ -27,9 +28,11 @@
 <link rel="stylesheet" type="text/css"
 	th:href="@{/layout/css/font-awesome.min.css}" />
 
-<link rel="stylesheet" type="text/css" th:href="@{/layout/css/fontello.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/layout/css/fontello.css}" />
 
-<link rel="stylesheet" type="text/css" th:href="@{/layout/css/animate.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/layout/css/animate.css}" />
 
 <link rel="stylesheet" type="text/css"
 	th:href="@{/layout/css/bootstrap.min.css}" />
@@ -43,7 +46,8 @@
 <link rel="stylesheet" type="text/css"
 	th:href="@{/layout/css/owl.transitions.css}" />
 
-<link rel="stylesheet" type="text/css" th:href="@{/layout/css/style.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/layout/css/style.css}" />
 
 <link rel="stylesheet" type="text/css"
 	th:href="@{/layout/css/responsive.css}" />
@@ -103,7 +107,8 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#"><img th:src="@{/layout/img/logo.png}" alt="" /></a>
+					<a class="navbar-brand" href="#"><img
+						th:src="@{/layout/img/logo.png}" alt="" /></a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -113,18 +118,19 @@
 						<button class="navbar-btn nav-button wow bounceInRight login"
 							data-wow-delay="0.8s">Login</button>
 						<button class="navbar-btn nav-button wow fadeInRight"
-							data-wow-delay="0.6s" th:action="@{/logout}" >Sign up</button>
+							data-wow-delay="0.6s" th:action="@{/logout}">Sign up</button>
 					</div>
 					<ul class="main-nav nav navbar-nav navbar-right">
 						<li class="wow fadeInDown" data-wow-delay="0s"><a
 							class="active" href="#">Home</a></li>
-						<li class="wow fadeInDown" data-wow-delay="0.1s"><a href="#">Job
-								Seekers</a></li>
-						<li class="wow fadeInDown" data-wow-delay="0.2s"><a href="#">Employeers</a></li>
-						<li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#">About
-								us</a></li>
-						<li class="wow fadeInDown" data-wow-delay="0.4s"><a href="#">Blog</a></li>
-						<li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#">Contact</a></li>
+
+						<li class="wow fadeInDown" data-wow-delay="0.1s"><a
+							th:href="@{/redireciona/usuario/novo}">Cadastrar Usuário</a></li>
+
+						<li class="wow fadeInDown" data-wow-delay="0.2s"><a
+							th:href="@{/usuario}">Listar Usuário</a></li>
+
+						<!-- EXEMPLOS -->
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -143,7 +149,8 @@
 						<img th:src="@{/layout/img/slider-image-3.jpg}" alt="Mirror Edge" />
 					</div>
 					<div class="item">
-						<img th:src="@{/layout/img/slider-image-2.jpg}" alt="The Last of us" />
+						<img th:src="@{/layout/img/slider-image-2.jpg}"
+							alt="The Last of us" />
 					</div>
 					<div class="item">
 						<img th:src="@{/layout/img/slider-image-1.jpg}" alt="GTA V" />
@@ -269,7 +276,8 @@
 						<div class="job-posts table-responsive">
 							<table class="table">
 								<tr class="odd wow fadeInUp" data-wow-delay="1s">
-									<td class="tbl-logo"><img th:src="@{/layout/img/job-logo1.png}" alt="" /></td>
+									<td class="tbl-logo"><img
+										th:src="@{/layout/img/job-logo1.png}" alt="" /></td>
 									<td class="tbl-title"><h4>
 											Web Designer <br></br> <span class="job-type">full
 												time</span>
@@ -282,7 +290,8 @@
 									<td class="tbl-apply"><a href="#">Apply now</a></td>
 								</tr>
 								<tr class="even wow fadeInUp" data-wow-delay="1.1s">
-									<td class="tbl-logo"><img th:src="@{/layout/img/job-logo2.png}" alt="" /></td>
+									<td class="tbl-logo"><img
+										th:src="@{/layout/img/job-logo2.png}" alt="" /></td>
 									<td class="tbl-title"><h4>
 											Front End Developer <br></br> <span class="job-type">full
 												time</span>
@@ -295,7 +304,8 @@
 									<td class="tbl-apply"><a href="#">Apply now</a></td>
 								</tr>
 								<tr class="odd wow fadeInUp" data-wow-delay="1.2s">
-									<td class="tbl-logo"><img th:src="@{/layout/img/job-logo3.png}" alt="" /></td>
+									<td class="tbl-logo"><img
+										th:src="@{/layout/img/job-logo3.png}" alt="" /></td>
 									<td class="tbl-title"><h4>
 											HR Manager <br></br> <span class="job-type">full time</span>
 										</h4></td>
@@ -303,11 +313,12 @@
 									<td><p>
 											<i class="icon-location"></i>San Franciso, USA
 										</p></td>
-									<td><p> 14000</p></td>
+									<td><p>14000</p></td>
 									<td class="tbl-apply"><a href="#">Apply now</a></td>
 								</tr>
 								<tr class="even wow fadeInUp" data-wow-delay="1.3s">
-									<td class="tbl-logo"><img th:src="@{/layout/img/job-logo4.png}" alt="" /></td>
+									<td class="tbl-logo"><img
+										th:src="@{/layout/img/job-logo4.png}" alt="" /></td>
 									<td class="tbl-title"><h4>
 											Internship Designer <br></br> <span class="job-type">full
 												time</span>
@@ -316,37 +327,12 @@
 									<td><p>
 											<i class="icon-location"></i>San Franciso, USA
 										</p></td>
-									<td><p> 14000</p></td>
+									<td><p>14000</p></td>
 									<td class="tbl-apply"><a href="#">Apply now</a></td>
 								</tr>
 								<tr class="odd wow fadeInUp" data-wow-delay="1.4s">
-									<td class="tbl-logo"><img th:src="@{/layout/img/job-logo5.png}" alt="" /></td>
-									<td class="tbl-title"><h4>
-											Software Designer <br></br> <span class="job-type">full
-												time</span>
-										</h4></td>
-									<td><p>Microsoft</p></td>
-									<td><p>
-											<i class="icon-location"></i>San Franciso, USA
-										</p></td>
-									<td><p> 14000</p></td>
-									<td class="tbl-apply"><a href="#">Apply now</a></td>
-								</tr>
-								<tr class="even hide-jobs">
-									<td class="tbl-logo"><img th:src="@{/layout/img/job-logo4.png}" alt="" /></td>
-									<td class="tbl-title"><h4>
-											Internship Designer <br></br> <span class="job-type">full
-												time</span>
-										</h4></td>
-									<td><p>Google</p></td>
-									<td><p>
-											<i class="icon-location"></i>San Franciso, USA
-										</p></td>
-									<td><p>14000</p></td>
-									<td class="tbl-apply"><a href="#">Apply now</a></td>
-								</tr>
-								<tr class="odd hide-jobs">
-									<td class="tbl-logo"><img th:src="@{/layout/img/job-logo5.png}" alt="" /></td>
+									<td class="tbl-logo"><img
+										th:src="@{/layout/img/job-logo5.png}" alt="" /></td>
 									<td class="tbl-title"><h4>
 											Software Designer <br></br> <span class="job-type">full
 												time</span>
@@ -359,7 +345,8 @@
 									<td class="tbl-apply"><a href="#">Apply now</a></td>
 								</tr>
 								<tr class="even hide-jobs">
-									<td class="tbl-logo"><img th:src="@{/layout/img/job-logo4.png}" alt="" /></td>
+									<td class="tbl-logo"><img
+										th:src="@{/layout/img/job-logo4.png}" alt="" /></td>
 									<td class="tbl-title"><h4>
 											Internship Designer <br></br> <span class="job-type">full
 												time</span>
@@ -372,7 +359,8 @@
 									<td class="tbl-apply"><a href="#">Apply now</a></td>
 								</tr>
 								<tr class="odd hide-jobs">
-									<td class="tbl-logo"><img th:src="@{/layout/img/job-logo5.png}" alt="" /></td>
+									<td class="tbl-logo"><img
+										th:src="@{/layout/img/job-logo5.png}" alt="" /></td>
 									<td class="tbl-title"><h4>
 											Software Designer <br></br> <span class="job-type">full
 												time</span>
@@ -381,7 +369,35 @@
 									<td><p>
 											<i class="icon-location"></i>San Franciso, USA
 										</p></td>
-									<td><p> 14000</p></td>
+									<td><p>14000</p></td>
+									<td class="tbl-apply"><a href="#">Apply now</a></td>
+								</tr>
+								<tr class="even hide-jobs">
+									<td class="tbl-logo"><img
+										th:src="@{/layout/img/job-logo4.png}" alt="" /></td>
+									<td class="tbl-title"><h4>
+											Internship Designer <br></br> <span class="job-type">full
+												time</span>
+										</h4></td>
+									<td><p>Google</p></td>
+									<td><p>
+											<i class="icon-location"></i>San Franciso, USA
+										</p></td>
+									<td><p>14000</p></td>
+									<td class="tbl-apply"><a href="#">Apply now</a></td>
+								</tr>
+								<tr class="odd hide-jobs">
+									<td class="tbl-logo"><img
+										th:src="@{/layout/img/job-logo5.png}" alt="" /></td>
+									<td class="tbl-title"><h4>
+											Software Designer <br></br> <span class="job-type">full
+												time</span>
+										</h4></td>
+									<td><p>Microsoft</p></td>
+									<td><p>
+											<i class="icon-location"></i>San Franciso, USA
+										</p></td>
+									<td><p>14000</p></td>
 									<td class="tbl-apply"><a href="#">Apply now</a></td>
 								</tr>
 							</table>
@@ -433,9 +449,8 @@
 										<strong>Ohidul Islam, </strong><i>Web Designer</i>
 									</h4>
 								</div>
-								<div class="client-face">
-								</div>
-									<img th:src="@{/layout/img/client-face2.png}" alt="" />
+								<div class="client-face"></div>
+								<img th:src="@{/layout/img/client-face2.png}" alt="" />
 							</div>
 							<div class="item">
 								<div class="client-text">
@@ -479,8 +494,8 @@
 				<div class="row footer">
 					<div class="col-md-4">
 						<div class="single-footer">
-							<img th:src="@{/layout/img/footer-logo.png}" alt="" class="wow pulse"
-								data-wow-delay="1s" />
+							<img th:src="@{/layout/img/footer-logo.png}" alt=""
+								class="wow pulse" data-wow-delay="1s" />
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 								Obcaecati architecto quaerat facere blanditiis tempora sequi
 								nulla accusamus, possimus cum necessitatibus suscipit quia autem

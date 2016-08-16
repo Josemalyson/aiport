@@ -1,0 +1,11 @@
+http://www.thymeleaf.org/eclipse-plugin-update-site/
+
+
+This is the Thymeleaf Eclipse Plugin Update Site... but if you're reading this, then you're 
+visiting with a browser. Instead, open up Eclipse and point it to this update site.
+
+In Eclipse, go to Help >> Install New Software... then enter this update site URL
+ (should be http://www.thymeleaf.org/eclipse-plugin-update-site/). Eclipse should then pick up the plugin to install.
+
+If you encounter any issues, visit the plugin site's GitHub issues section
+ (https://github.com/thymeleaf/thymeleaf-extras-eclipse-plugin/issues) and raise a new issue or check through the existing closed ones to see if what you're encountering has already been resolved.

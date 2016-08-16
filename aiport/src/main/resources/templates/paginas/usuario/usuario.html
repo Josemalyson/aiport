@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorator="layout/LayoutPadrao">
+
+<head>
+<title>Listar Usuario</title>
+</head>
+
+<body>
+	<section layout:fragment="slide">
+		<div class="page-header">
+			<h1>
+				<small>Novo/Editar Usuário</small>
+			</h1>
+		</div>
+	</section>
+
+	<section layout:fragment="conteudo">
+		<form th:action="@{/usuario/salvar}" method="post"
+			th:object="${usuario}">
+
+			<div class="container-fluid">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Cadastro de Usuário</h3>
+					</div>
+
+					<div class="panel-body">
+
+						<div class="form-group"
+							th:classappend="${#fields.hasErrors('nome')} ? has-error">
+							<label for="nome" class="control-label">Nome completo</label> <input
+								id="nome" name="nome" type="text" class="form-control"
+								th:field="*{nome}" />
+						</div>
+
+						<div class="row">
+
+							<div class="col-sm-4 form-group"
+								th:classappend="${#fields.hasErrors('tipoDocumento')} ? has-error">
+
+								<label for="tipoDocumento" class="control-label">Tipo de
+									documento</label> <select id="tipoDocumento"
+									class="form-control control-label"
+									th:field="*{tipoDocumento.id}">
+									<option value="">Selecione o tipo</option>
+									<option th:each="tipoDocumento : ${tipoDocumentoList}"
+										th:value="${tipoDocumento.id}"
+										th:text="${tipoDocumento.sigla}"></option>
+								</select>
+
+							</div>
+
+							<div class="col-sm-4 form-group"
+								th:classappend="${#fields.hasErrors('numeroDocumento')} ? has-error">
+								<label for="cpf" class="control-label">Número do CPF/RG</label>
+								<input id="cpf" type="text" class="form-control"
+									th:field="*{numeroDocumento}" />
+							</div>
+
+							<div class="col-sm-4 form-group"
+								th:classappend="${#fields.hasErrors('dataNascimento')} ? has-error">
+								<label for="data" class="control-label">Data de
+									Nascimento</label> <input id="data" type="text"
+									th:field="*{dataNascimento}" class="form-control" />
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('login.nomeUsuario')} ? has-error">
+								<div class="col-md-12">
+									<label class="control-label">Email</label> <input id="email"
+										type="text" class="form-control"
+										th:field="*{login.nomeUsuario}" />
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="row">
+							<div class="form-group"
+								th:classappend="${#fields.hasErrors('login.senha')} ? has-error">
+								<div class="col-md-6">
+									<label class="control-label">Senha</label> <br></br> <input
+										type="password" class="form-control" th:field="*{login.senha}" />
+								</div>
+
+								<div class="col-md-6">
+									<label class="control-label">Confirmar Senha</label> <br></br>
+									<input type="password" class="form-control" />
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="panel panel-primary" th:if="false">
+							<div class="panel-heading">
+								<h3 class="panel-title">Informações sobre o cartao de
+									milhas</h3>
+							</div>
+							<br />
+							<div class="row">
+								<div class="col-md-12">
+									<div class="col-md-6">
+										<label>Número do cartão de milhas</label> <input type="text"
+											class="form-control" th:disabled="true" />
+									</div>
+									<div class="col-md-6">
+										<label>Quantidade de milhas</label> <input type="text"
+											class="form-control" th:disabled="true" />
+									</div>
+								</div>
+							</div>
+							<br />
+						</div>
+
+						<button type="button" class="btn btn-info btn-lg" id="modal"
+							data-toggle="modal" data-target="#myModal"
+							style="visibility: hidden;">Open Modal</button>
+
+						<!-- Modal -->
+						<div id="myModal" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"></button>
+										<h3 class="modal-title">Aviso do sistema!</h3>
+									</div>
+									<div class="alert alert-danger alert-dismissible fade in"
+										role="alert">
+										<h4 id="conteudo"></h4>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Close</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<button class="btn  btn-primary" type="submit">Salvar</button>
+							<button class="btn  btn-danger">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</section>
+</body>
+</html>

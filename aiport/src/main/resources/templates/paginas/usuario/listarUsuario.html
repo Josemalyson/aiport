@@ -22,7 +22,7 @@
 
 		<div class="panel panel-default">
 			<!-- Table -->
-			<table class="table table-bordered table-striped" >
+			<table class="table">
 				<tr>
 					<th>Nome do usuário</th>
 					<th>Data de Nasicmento</th>
@@ -30,31 +30,18 @@
 					<th>Ações</th>
 				</tr>
 				<tr th:each="usuario: ${usuarios}">
-					<td th:text="${usuario.nome}">Jill</td>
-					<td th:data="${usuario.dataNascimento}" >22/05/2015</td>
-					<td th:text="${usuario.login.nomeUsuario}">teste@gmail.com</td>
+					<td th:text="${usuario.nome}"></td>
+					<td th:text="${usuario.dataNascimento}"></td>
+					<td th:text="${usuario.login.nomeUsuario}"></td>
 					<td>
 						<div class="btn-group" role="group" aria-label="...">
-							<button type="button" class="btn btn-default">Editar</button>
-							<button type="button" class="btn btn-default">Excluir</button>
+							<button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+							<button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
 						</div>
 					</td>
-
 				</tr>
 				<tr th:if="${usuarios.empty}">
-						<td colspan="6">Nenhum usuário cadastrado</td>
-					</tr>
-				<tr>
-					<td>Jill</td>
-					<td>22/05/2015</td>
-					<td>teste@gmail.com</td>
-					<td>
-						<div class="btn-group" role="group" aria-label="...">
-							<button type="button" class="btn btn-default">Editar</button>
-							<button type="button" class="btn btn-default">Excluir</button>
-						</div>
-					</td>
-
+					<td colspan="6">Nenhum usuário cadastrado</td>
 				</tr>
 			</table>
 		</div>

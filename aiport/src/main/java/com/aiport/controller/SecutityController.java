@@ -14,14 +14,15 @@ public class SecutityController {
 	public String login(@AuthenticationPrincipal User user) {
 
 		if (user != null) {
-
+			
 			for (GrantedAuthority grantedAuthority : user.getAuthorities()) {
 				if (grantedAuthority.getAuthority().contains("ROLE_ADMIN")) {
-					return "usuarioInicial";
+					return "redirect:/redireciona/adminInicial";
 				}
 			}
 		}
-		return "inicio";
+		
+		return "redirect:/redireciona/usuarioInicial";
 
 	}
 }
