@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,8 +35,12 @@ public class UsuarioController {
 	@RequestMapping("/novo")
 	public ModelAndView novo(Usuario usuario) {
 		ModelAndView modelAndView = new ModelAndView("/paginas/usuario/usuario");
-		modelAndView.addObject("tipoDocumentoList", tipoDocumentoService.findAll());
+		listarTipoDeDocumento(modelAndView);
 		return modelAndView;
+	}
+
+	private void listarTipoDeDocumento(ModelAndView modelAndView) {
+		modelAndView.addObject("tipoDocumentoList", tipoDocumentoService.findAll());
 	}
 
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
@@ -48,6 +53,20 @@ public class UsuarioController {
 		attributes.addFlashAttribute("mensagem", "Vinho salvo com sucesso!");
 		return new ModelAndView("redirect:/usuario");
 
+	}
+	
+	@RequestMapping("/{id}")
+	public ModelAndView editar(@PathVariable("id") Usuario usuario){
+		ModelAndView modelAndView = new ModelAndView("/paginas/usuario/usuario");
+		modelAndView.addObject("usuario", usuario);
+		listarTipoDeDocumento(modelAndView);
+		return modelAndView;
+	}
+
+	@RequestMapping("/excluir/{id}")
+	public ModelAndView ecluir(@PathVariable("id") Usuario usuario){
+		usuarioService.excluir(usuario);
+		return new ModelAndView("redirect:/usuario");
 	}
 
 }

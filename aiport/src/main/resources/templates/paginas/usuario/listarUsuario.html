@@ -35,8 +35,8 @@
 					<td th:text="${usuario.login.nomeUsuario}"></td>
 					<td>
 						<div class="btn-group" role="group" aria-label="...">
-							<button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-							<button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+							<a class="fa fa-pencil btn"	th:href="@{/usuario/{id}(id=${usuario.id})}"></a> 
+							<a	class="fa fa-trash btn" th:href="@{/usuario/excluir/{id}(id=${usuario.id})}"></a>
 						</div>
 					</td>
 				</tr>
