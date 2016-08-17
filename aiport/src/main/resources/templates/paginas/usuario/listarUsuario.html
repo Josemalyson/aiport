@@ -31,7 +31,7 @@
 				</tr>
 				<tr th:each="usuario: ${usuarios}">
 					<td th:text="${usuario.nome}"></td>
-					<td th:text="${usuario.dataNascimento}"></td>
+					<td th:text="${#calendars.format(usuario.dataNascimento, 'dd/MMM/yyyy')}"></td>
 					<td th:text="${usuario.login.nomeUsuario}"></td>
 					<td>
 						<div class="btn-group" role="group" aria-label="...">

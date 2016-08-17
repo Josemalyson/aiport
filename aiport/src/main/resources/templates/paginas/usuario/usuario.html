@@ -80,8 +80,8 @@
 								</div>
 							</div>
 						</div>
-						
-						
+
+
 						<div class="row">
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('login.senha')} ? has-error">
@@ -97,9 +97,9 @@
 							</div>
 						</div>
 
+						<br />
 
-
-						<div class="panel panel-primary" th:if="false">
+						<div class="panel panel-primary" th:if="${exibir}">
 							<div class="panel-heading">
 								<h3 class="panel-title">Informações sobre o cartao de
 									milhas</h3>
@@ -108,12 +108,14 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="col-md-6">
-										<label>Número do cartão de milhas</label> <input type="text"
-											class="form-control" th:disabled="true" />
+										<label>Número do cartão de milhas</label> <input
+											class="form-control" th:disabled="true"
+											th:value="*{cartaoMilha.nuCartao}" />
 									</div>
 									<div class="col-md-6">
-										<label>Quantidade de milhas</label> <input type="text"
-											class="form-control" th:disabled="true" />
+										<label>Quantidade de milhas</label> <input
+											class="form-control" th:disabled="true"
+											th:value="*{cartaoMilha.quantidadeMilha}" />
 									</div>
 								</div>
 							</div>
@@ -155,7 +157,15 @@
 					</div>
 				</div>
 			</div>
+
 		</form>
 	</section>
+	<th:block layout:fragment="javascript-extra">
+		<script>
+			 	$( function() {
+				    $( "#data" ).datepicker();
+				  } );		
+			 </script>
+	</th:block>
 </body>
 </html>

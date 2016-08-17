@@ -36,6 +36,7 @@ public class UsuarioController {
 	public ModelAndView novo(Usuario usuario) {
 		ModelAndView modelAndView = new ModelAndView("/paginas/usuario/usuario");
 		listarTipoDeDocumento(modelAndView);
+		modelAndView.addObject("exibir", false);
 		return modelAndView;
 	}
 
@@ -59,6 +60,7 @@ public class UsuarioController {
 	public ModelAndView editar(@PathVariable("id") Usuario usuario){
 		ModelAndView modelAndView = new ModelAndView("/paginas/usuario/usuario");
 		modelAndView.addObject("usuario", usuario);
+		modelAndView.addObject("exibir", true);
 		listarTipoDeDocumento(modelAndView);
 		return modelAndView;
 	}
