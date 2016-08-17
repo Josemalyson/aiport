@@ -1,10 +1,16 @@
 package com.aiport.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,10 +53,22 @@ public class UsuarioController {
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public ModelAndView salvar(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) {
 
+		if (usuario.getDataNascimento() != null ) {
+			LocalDate localDate = LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(usuario.getDataNascimento()));
+			Period period = Period.between(localDate, LocalDate.now());
+			
+			if (period.getYears() < 18) {
+				usuario.setDataNascimento(null);
+				result.addError(new FieldError("usuario","dataNascimento","Menor de Idade"));
+			}
+		}
+		
 		if (result.hasErrors()) {
 			return novo(usuario);
 		}
+	
 		usuarioService.save(usuario);
+		
 		attributes.addFlashAttribute("mensagem", "Vinho salvo com sucesso!");
 		return new ModelAndView("redirect:/usuario");
 

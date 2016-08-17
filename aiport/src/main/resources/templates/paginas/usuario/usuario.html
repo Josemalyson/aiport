@@ -19,8 +19,26 @@
 	</section>
 
 	<section layout:fragment="conteudo">
+
+
 		<form th:action="@{/usuario/salvar}" method="post"
 			th:object="${usuario}">
+
+			<div class="alert  alert-danger  alert-dismissible" role="alert"
+				th:if="${#fields.hasAnyErrors()}">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<th:block th:each="erro : ${#fields.detailedErrors()}">
+					<div>
+						<i class="fa  fa-exclamation-circle"></i> <span
+							th:text="${erro.message}">Já existe um produto com o nome
+							informado.</span>
+					</div>
+				</th:block>
+
+			</div>
 
 			<div class="container-fluid">
 				<div class="panel panel-default">
@@ -86,13 +104,15 @@
 							<div class="form-group"
 								th:classappend="${#fields.hasErrors('login.senha')} ? has-error">
 								<div class="col-md-6">
-									<label class="control-label">Senha</label> <br></br> <input
-										type="password" class="form-control" th:field="*{login.senha}" />
+									<label class="control-label" for="senha">Senha</label> <br></br>
+									<input id="senha" type="password" class="form-control"
+										th:field="*{login.senha}" />
 								</div>
 
 								<div class="col-md-6">
-									<label class="control-label">Confirmar Senha</label> <br></br>
-									<input type="password" class="form-control" />
+									<label class="control-label" for="confirmarSenha">Confirmar
+										Senha</label> <br></br> <input id="confirmarSenha" type="password"
+										class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -151,21 +171,17 @@
 
 
 						<div class="form-group">
-							<button class="btn  btn-primary" type="submit">Salvar</button>
+							<button id="salvar" class="btn  btn-primary" type="submit">Salvar</button>
 							<button class="btn  btn-danger">Cancelar</button>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</form>
 	</section>
+
 	<th:block layout:fragment="javascript-extra">
-		<script>
-			 	$( function() {
-				    $( "#data" ).datepicker();
-				  } );		
-			 </script>
+		<script th:src="@{/layout/js/usuario.js}"></script>
 	</th:block>
 </body>
 </html>

@@ -52,4 +52,8 @@ public class UsuarioService {
 		usuarioRepository.delete(usuario.getId());
 	}
 
+	public Usuario findOne(Long id) {
+		return usuarioRepository.findOne(id);
+	}
+
 }
