@@ -19,8 +19,7 @@
 	</section>
 
 	<section layout:fragment="conteudo">
-		<form th:action="@{/voo/salvar}" method="post"
-			th:object="${voo}">
+		<form th:action="@{/voo/salvar}" method="post" th:object="${voo}">
 
 			<div class="container-fluid">
 				<div class="panel panel-default">
@@ -40,26 +39,25 @@
 						<div class="row">
 
 							<div class="col-sm-4 form-group"
-								th:classappend="${#fields.hasErrors('cidadeOrigem.dsNome')} ? has-error">
+								th:classappend="${#fields.hasErrors('destino.dsNome')} ? has-error">
 
-								<label for="cidadeOrigem" class="control-label">Cidade Origem</label> <select id="cidadeOrigem"
-									class="form-control control-label"
-									th:field="*{cidadeOrigem.id}">
+								<label for="cidadeOrigem" class="control-label">Cidade
+									Origem</label> <select id="cidadeOrigem"
+									class="form-control control-label" th:field="*{destino.id}">
 									<option value="">Selecione a cidade</option>
 									<option th:each="cidadeOrigem : ${cidadeList}"
-										th:value="${cidadeOrigem.id}"
-										th:text="${cidadeOrigem.dsNome}"></option>
+										th:value="${cidadeOrigem.id}" th:text="${cidadeOrigem.dsNome}"></option>
 								</select>
 
 							</div>
-							
-							
-						<div class="col-sm-4 form-group"
-								th:classappend="${#fields.hasErrors('cidadeDestino.dsNome')} ? has-error">
 
-								<label for="cidadeDestino" class="control-label">Cidade Destino</label> <select id="cidadeDestino"
-									class="form-control control-label"
-									th:field="*{cidadeDestino.id}">
+
+							<div class="col-sm-4 form-group"
+								th:classappend="${#fields.hasErrors('origem.dsNome')} ? has-error">
+
+								<label for="cidadeDestino" class="control-label">Cidade
+									Destino</label> <select id="cidadeDestino"
+									class="form-control control-label" th:field="*{origem.id}">
 									<option value="">Selecione a cidade</option>
 									<option th:each="cidadeDestino : ${cidadeList}"
 										th:value="${cidadeDestino.id}"
@@ -70,52 +68,14 @@
 
 							<div class="col-sm-4 form-group"
 								th:classappend="${#fields.hasErrors('dataPartida')} ? has-error">
-								<label for="data" class="control-label">Data do Voo</label> <input id="data" type="text"
-									th:field="*{dataPartida}" class="form-control" />
+								<label for="data" class="control-label">Data do Voo</label> <input
+									id="data" type="text" th:field="*{dataPartida}"
+									class="form-control" />
 							</div>
 
 						</div>
 
-						<div class="row">
-							<div class="form-group"
-								th:classappend="${#fields.hasErrors('login.nomeUsuario')} ? has-error">
-								<div class="col-md-12">
-									<label class="control-label">Email</label> <input id="email"
-										type="text" class="form-control"
-										th:field="*{login.nomeUsuario}" />
-								</div>
-							</div>
-						</div>
-						
-						
-
-						<button type="button" class="btn btn-info btn-lg" id="modal"
-							data-toggle="modal" data-target="#myModal"
-							style="visibility: hidden;">Open Modal</button>
-
-						<!-- Modal -->
-						<div id="myModal" class="modal fade" role="dialog">
-							<div class="modal-dialog">
-
-								<!-- Modal content-->
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"></button>
-										<h3 class="modal-title">Aviso do sistema!</h3>
-									</div>
-									<div class="alert alert-danger alert-dismissible fade in"
-										role="alert">
-										<h4 id="conteudo"></h4>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">Close</button>
-									</div>
-								</div>
-
-							</div>
-						</div>
-
+						<br />
 
 						<div class="form-group">
 							<button class="btn  btn-primary" type="submit">Salvar</button>
