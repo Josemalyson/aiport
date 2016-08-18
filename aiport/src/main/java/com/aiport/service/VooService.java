@@ -29,4 +29,7 @@ public class VooService implements Serializable{
 		return retorno;
 	}
 	
+	public void save(Voo voo){
+		vooRepository.save(voo);
+	}
 }

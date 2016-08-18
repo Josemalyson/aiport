@@ -21,4 +21,9 @@ public class RedirecionadorMenuController {
 	public String redirecionarPaginaNovoUsuario(){
 		return "redirect:/usuario/novo";
 	}
+	
+	@RequestMapping("/voo/novo")
+	public String redirecionarPaginaNovoVoo(){
+		return "redirect:/voo/novo";
+	}
 }
