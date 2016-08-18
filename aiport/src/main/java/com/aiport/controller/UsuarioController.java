@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -69,12 +68,11 @@ public class UsuarioController {
 	
 		usuarioService.save(usuario);
 		
-		attributes.addFlashAttribute("mensagem", "Vinho salvo com sucesso!");
 		return new ModelAndView("redirect:/usuario");
 
 	}
 	
-	@RequestMapping("/{id}")
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ModelAndView editar(@PathVariable("id") Usuario usuario){
 		ModelAndView modelAndView = new ModelAndView("/paginas/usuario/usuario");
 		modelAndView.addObject("usuario", usuario);
@@ -83,7 +81,7 @@ public class UsuarioController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/excluir/{id}")
+	@RequestMapping(value = "/excluir/{id}", method = RequestMethod.GET)
 	public ModelAndView ecluir(@PathVariable("id") Usuario usuario){
 		usuarioService.excluir(usuario);
 		return new ModelAndView("redirect:/usuario");
