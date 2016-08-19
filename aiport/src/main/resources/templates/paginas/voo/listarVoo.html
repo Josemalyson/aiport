@@ -60,8 +60,8 @@
 		</div>
 		
 		<!-- modal  adiciona / edita-->
-		<div class="modal fade" tabindex="-1" role="dialog" id="modalAdicionaEdita">
-			  <div class="modal-dialog" role="document">
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="modalAdicionaEdita">
+			  <div class="modal-dialog modal-lg" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -73,11 +73,11 @@
 							<div class="row">
 
 								<div class="col-sm-4 form-group"
-									th:classappend="${#fields.hasErrors('destino.dsNome')} ? has-error">
+									th:classappend="${#fields.hasErrors('origem.dsNome')} ? has-error">
 
 									<label for="cidadeOrigem" class="control-label">Cidade
 										Origem</label> <select id="cidadeOrigem"
-										class="form-control control-label" th:field="*{destino.id}">
+										class="form-control control-label" th:field="*{origem.id}">
 										<option value="">Selecione a cidade</option>
 										<option th:each="cidadeOrigem : ${cidadeList}"
 											th:value="${cidadeOrigem.id}"
@@ -88,11 +88,11 @@
 
 
 								<div class="col-sm-4 form-group"
-									th:classappend="${#fields.hasErrors('origem.dsNome')} ? has-error">
+									th:classappend="${#fields.hasErrors('destino.dsNome')} ? has-error">
 
 									<label for="cidadeDestino" class="control-label">Cidade
 										Destino</label> <select id="cidadeDestino"
-										class="form-control control-label" th:field="*{origem.id}">
+										class="form-control control-label" th:field="*{destino.id}">
 										<option value="">Selecione a cidade</option>
 										<option th:each="cidadeDestino : ${cidadeList}"
 											th:value="${cidadeDestino.id}"
@@ -107,29 +107,34 @@
 										id="data" type="text" th:field="*{quilometragem}"
 										class="form-control" />
 								</div>
-								
+
+							</div>
+							
+							<div class="row">
+							
 								<div class="col-sm-4 form-group"
 									th:classappend="${#fields.hasErrors('preco')} ? has-error">
 									<label for="data" class="control-label">Preço por passageiro</label> <input
 										id="data" type="text" th:field="*{preco}"
 										class="form-control" />
 								</div>
-
-							</div>
-							
-							<div class="row">
+								
 								<div class="col-sm-4 form-group"
 										th:classappend="${#fields.hasErrors('dataPartida')} ? has-error">
 										<label for="data" class="control-label">Data do Voo</label> <input
 											id="data" type="text" th:field="*{dataPartida}"
 											class="form-control" />
 								</div>
+								
 								<div class="col-sm-4 form-group"
 										th:classappend="${#fields.hasErrors('minutosDuracao')} ? has-error">
 										<label for="data" class="control-label">Duração</label> <input
 											id="data" type="text" th:field="*{minutosDuracao}"
 											class="form-control" />
 								</div>
+							</div>
+							
+							<div class="row">
 								
 								<div class="col-sm-4 form-group"
 									th:classappend="${#fields.hasErrors('aeronave.descricaoModelo')} ? has-error">
