@@ -2,14 +2,19 @@ package com.aiport.dto;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import com.aiport.entity.Cidade;
 
 public class PesquisarDto {
 
+	@NotNull(message = "Campo data obrigatório")
 	private Date data;
 	
+	@NotNull(message = "Campo Cidade Origem obrigatório")
 	private Cidade cidadeOrigem;
 	
+	@NotNull(message = "Campo Cidade Destino obrigatório")
 	private Cidade cidadeDestino;
 
 	public Date getData() {
