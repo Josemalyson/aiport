@@ -68,60 +68,90 @@
 			        <h4 class="modal-title">Voo</h4>
 			      </div>
 			      <div class="modal-body">
-			        	<form th:action="@{/voo/salvar}" method="post" th:object="${voo}">
-				
-										<div class="row">
-				
-											<div class="col-sm-4 form-group"
-												th:classappend="${#fields.hasErrors('destino.dsNome')} ? has-error">
-				
-												<label for="cidadeOrigem" class="control-label">Cidade
-													Origem</label> <select id="cidadeOrigem"
-													class="form-control control-label" th:field="*{destino.id}">
-													<option value="">Selecione a cidade</option>
-													<option th:each="cidadeOrigem : ${cidadeList}"
-														th:value="${cidadeOrigem.id}" th:text="${cidadeOrigem.dsNome}"></option>
-												</select>
-				
-											</div>
-				
-				
-											<div class="col-sm-4 form-group"
-												th:classappend="${#fields.hasErrors('origem.dsNome')} ? has-error">
-				
-												<label for="cidadeDestino" class="control-label">Cidade
-													Destino</label> <select id="cidadeDestino"
-													class="form-control control-label" th:field="*{origem.id}">
-													<option value="">Selecione a cidade</option>
-													<option th:each="cidadeDestino : ${cidadeList}"
-														th:value="${cidadeDestino.id}"
-														th:text="${cidadeDestino.dsNome}"></option>
-												</select>
-				
-											</div>
-				
-											<div class="col-sm-4 form-group"
-												th:classappend="${#fields.hasErrors('dataPartida')} ? has-error">
-												<label for="data" class="control-label">Data do Voo</label> <input
-													id="data" type="text" th:field="*{dataPartida}"
-													class="form-control" />
-											</div>
-				
-										</div>
-				
-										<br />
-				
-										<div class="form-group">
-											<button class="btn  btn-primary" type="submit">Salvar</button>
-											<button class="btn  btn-danger">Cancelar</button>
-										</div>
+						<form th:action="@{/voo/salvar}" method="post" th:object="${voo}" action="#">
 
+							<div class="row">
+
+								<div class="col-sm-4 form-group"
+									th:classappend="${#fields.hasErrors('destino.dsNome')} ? has-error">
+
+									<label for="cidadeOrigem" class="control-label">Cidade
+										Origem</label> <select id="cidadeOrigem"
+										class="form-control control-label" th:field="*{destino.id}">
+										<option value="">Selecione a cidade</option>
+										<option th:each="cidadeOrigem : ${cidadeList}"
+											th:value="${cidadeOrigem.id}"
+											th:text="${cidadeOrigem.dsNome}"></option>
+									</select>
+
+								</div>
+
+
+								<div class="col-sm-4 form-group"
+									th:classappend="${#fields.hasErrors('origem.dsNome')} ? has-error">
+
+									<label for="cidadeDestino" class="control-label">Cidade
+										Destino</label> <select id="cidadeDestino"
+										class="form-control control-label" th:field="*{origem.id}">
+										<option value="">Selecione a cidade</option>
+										<option th:each="cidadeDestino : ${cidadeList}"
+											th:value="${cidadeDestino.id}"
+											th:text="${cidadeDestino.dsNome}"></option>
+									</select>
+
+								</div>
+
+								<div class="col-sm-4 form-group"
+									th:classappend="${#fields.hasErrors('quilometragem')} ? has-error">
+									<label for="data" class="control-label">Distancia em km</label> <input
+										id="data" type="text" th:field="*{quilometragem}"
+										class="form-control" />
+								</div>
+								
+								<div class="col-sm-4 form-group"
+									th:classappend="${#fields.hasErrors('preco')} ? has-error">
+									<label for="data" class="control-label">Preço por passageiro</label> <input
+										id="data" type="text" th:field="*{preco}"
+										class="form-control" />
+								</div>
+
+							</div>
+							
+							<div class="row">
+								<div class="col-sm-4 form-group"
+										th:classappend="${#fields.hasErrors('dataPartida')} ? has-error">
+										<label for="data" class="control-label">Data do Voo</label> <input
+											id="data" type="text" th:field="*{dataPartida}"
+											class="form-control" />
+								</div>
+								<div class="col-sm-4 form-group"
+										th:classappend="${#fields.hasErrors('minutosDuracao')} ? has-error">
+										<label for="data" class="control-label">Duração</label> <input
+											id="data" type="text" th:field="*{minutosDuracao}"
+											class="form-control" />
+								</div>
+								
+								<div class="col-sm-4 form-group"
+									th:classappend="${#fields.hasErrors('aeronave.descricaoModelo')} ? has-error">
+
+									<label for="aeronave" class="control-label">Aeronave do Voo</label> <select id="cidadeDestino"
+										class="form-control control-label" th:field="*{aeronave.id}">
+										<option value="">Selecione a Aeronave</option>
+										<option th:each="aeronave : ${aeronaveList}"
+											th:value="${aeronave.id}"
+											th:text="${aeronave.descricaoModelo}"></option>
+									</select>
+
+								</div>
+							</div>
+
+							      <div class="modal-footer">
+							        	<button type="submit" class="btn  btn-primary">Salvar</button>
+										<button type="button" class="btn  btn-danger" data-dismiss="modal">Cancelar</button>
+				
+							      </div>
 						</form>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Save changes</button>
-			      </div>
+					</div>
 			    </div><!-- /.modal-content -->
 			  </div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->

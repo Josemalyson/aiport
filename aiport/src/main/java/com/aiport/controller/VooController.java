@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aiport.entity.Voo;
+import com.aiport.service.AeronaveService;
 import com.aiport.service.CidadeService;
 import com.aiport.service.VooService;
 
@@ -23,6 +24,9 @@ public class VooController {
 	
 	@Autowired
 	private CidadeService cidadeService;
+	
+	@Autowired
+	private AeronaveService aeronaveService;
 
 
 	@RequestMapping
@@ -30,6 +34,7 @@ public class VooController {
 		ModelAndView modelAndView = new ModelAndView("/paginas/voo/listarVoo");
 		modelAndView.addObject("voos", vooService.listaEmontaVooVO());
 		modelAndView.addObject("cidadeList", cidadeService.listar());
+		modelAndView.addObject("aeronaveList", aeronaveService.listar());
 		modelAndView.addObject("voo", new Voo());
 		return modelAndView;
 	}
@@ -44,9 +49,9 @@ public class VooController {
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public ModelAndView salvar(@Valid Voo voo, BindingResult result, RedirectAttributes attributes) {
 
-		if (result.hasErrors()) {
-			return novo(voo);
-		}
+//		if (result.hasErrors()) {
+//			return novo(voo);
+//		}
 		vooService.save(voo);
 		attributes.addFlashAttribute("mensagem", "Voo salvo com sucesso!");
 		return new ModelAndView("redirect:/voo");
