@@ -33,7 +33,7 @@ public class PesquisarController {
 	@RequestMapping( method = RequestMethod.POST)
 	public ModelAndView pesquisarVoo(PesquisarDto pesquisarDto){
 		ModelAndView modelAndView = new ModelAndView("inicio");
-		modelAndView.addObject("vooList", vooService.findByOrigemDestino(pesquisarDto.getCidadeOrigem().getId(), pesquisarDto.getCidadeDestino().getId()));
+		modelAndView.addObject("vooList", vooService.findByOrigemIdAndDestinoId(pesquisarDto.getCidadeOrigem().getId(), pesquisarDto.getCidadeDestino().getId()));
 		return modelAndView;
 	}
 }

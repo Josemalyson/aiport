@@ -16,8 +16,8 @@ public class VooService implements Serializable{
 	@Autowired
 	private VooRepository vooRepository;
 	
-	public List<Voo> findByOrigemDestino(Long origem, Long destino){
-		return vooRepository.findByOrigemDestino(origem, destino);
+	public List<Voo> findByOrigemIdAndDestinoId(Long origem, Long destino){
+		return vooRepository.findByOrigemIdAndDestinoId(origem, destino);
 	}
 	
 	public List<Voo> listar(){
