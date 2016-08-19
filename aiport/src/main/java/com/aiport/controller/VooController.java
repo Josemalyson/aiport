@@ -29,6 +29,8 @@ public class VooController {
 	public ModelAndView redirecionar() {
 		ModelAndView modelAndView = new ModelAndView("/paginas/voo/listarVoo");
 		modelAndView.addObject("voos", vooService.listaEmontaVooVO());
+		modelAndView.addObject("cidadeList", cidadeService.listar());
+		modelAndView.addObject("voo", new Voo());
 		return modelAndView;
 	}
 

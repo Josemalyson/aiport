@@ -20,6 +20,15 @@
 
 	<section layout:fragment="conteudo">
 
+			<!-- Button trigger modal -->
+			<button type="button" 
+					class="btn btn-primary btn-lg" 
+					data-toggle="modal" 
+					data-target="#modalAdicionaEdita">
+			  Novo voo
+			</button>
+			<br /><br /><br />
+			
 		<div class="panel panel-default">
 			<!-- Table -->
 			<table class="table">
@@ -31,12 +40,12 @@
 					<th>Quantidade de acentos</th>
 					<th>Ações</th>
 				</tr>
-				<tr th:each="voo: ${voos}">
-					<td th:text="${voo.numeroDoVoo}"></td>
-					<td th:text="${voo.origemDestino}"></td>
-					<td th:text="${#calendars.format(voo.horaDoVoo, 'dd/MMM/yyyy')}"></td>
-					<td th:text="${voo.precoDoVoo}"></td>
-					<td th:text="${voo.capacidadeDoVoo}"></td>
+				<tr th:each="vooVO: ${voos}">
+					<td th:text="${vooVO.numeroDoVoo}"></td>
+					<td th:text="${vooVO.origemDestino}"></td>
+					<td th:text="${#calendars.format(vooVO.horaDoVoo, 'dd/MMM/yyyy')}"></td>
+					<td th:text="${vooVO.precoDoVoo}"></td>
+					<td th:text="${vooVO.capacidadeDoVoo}"></td>
 					<td>
 						<div class="btn-group" role="group" aria-label="...">
 							<button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
@@ -49,6 +58,74 @@
 				</tr>
 			</table>
 		</div>
+		
+		<!-- modal  adiciona / edita-->
+		<div class="modal fade" tabindex="-1" role="dialog" id="modalAdicionaEdita">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">Voo</h4>
+			      </div>
+			      <div class="modal-body">
+			        	<form th:action="@{/voo/salvar}" method="post" th:object="${voo}">
+				
+										<div class="row">
+				
+											<div class="col-sm-4 form-group"
+												th:classappend="${#fields.hasErrors('destino.dsNome')} ? has-error">
+				
+												<label for="cidadeOrigem" class="control-label">Cidade
+													Origem</label> <select id="cidadeOrigem"
+													class="form-control control-label" th:field="*{destino.id}">
+													<option value="">Selecione a cidade</option>
+													<option th:each="cidadeOrigem : ${cidadeList}"
+														th:value="${cidadeOrigem.id}" th:text="${cidadeOrigem.dsNome}"></option>
+												</select>
+				
+											</div>
+				
+				
+											<div class="col-sm-4 form-group"
+												th:classappend="${#fields.hasErrors('origem.dsNome')} ? has-error">
+				
+												<label for="cidadeDestino" class="control-label">Cidade
+													Destino</label> <select id="cidadeDestino"
+													class="form-control control-label" th:field="*{origem.id}">
+													<option value="">Selecione a cidade</option>
+													<option th:each="cidadeDestino : ${cidadeList}"
+														th:value="${cidadeDestino.id}"
+														th:text="${cidadeDestino.dsNome}"></option>
+												</select>
+				
+											</div>
+				
+											<div class="col-sm-4 form-group"
+												th:classappend="${#fields.hasErrors('dataPartida')} ? has-error">
+												<label for="data" class="control-label">Data do Voo</label> <input
+													id="data" type="text" th:field="*{dataPartida}"
+													class="form-control" />
+											</div>
+				
+										</div>
+				
+										<br />
+				
+										<div class="form-group">
+											<button class="btn  btn-primary" type="submit">Salvar</button>
+											<button class="btn  btn-danger">Cancelar</button>
+										</div>
+
+						</form>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Save changes</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+		
 
 	</section>
 </body>
