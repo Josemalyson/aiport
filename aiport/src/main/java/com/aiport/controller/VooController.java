@@ -28,7 +28,7 @@ public class VooController {
 	@RequestMapping
 	public ModelAndView redirecionar() {
 		ModelAndView modelAndView = new ModelAndView("/paginas/voo/listarVoo");
-		modelAndView.addObject("voos", vooService.listar());
+		modelAndView.addObject("voos", vooService.listaEmontaVooVO());
 		return modelAndView;
 	}
 

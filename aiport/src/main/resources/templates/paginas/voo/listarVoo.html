@@ -29,10 +29,14 @@
 					<th>Data do voo</th>
 					<th>Preço</th>
 					<th>Quantidade de acentos</th>
+					<th>Ações</th>
 				</tr>
 				<tr th:each="voo: ${voos}">
-					<td th:text="${voo.id}"></td>
-					<td th:text="${voo.dataPartida}"></td>
+					<td th:text="${voo.numeroDoVoo}"></td>
+					<td th:text="${voo.origemDestino}"></td>
+					<td th:text="${#calendars.format(voo.horaDoVoo, 'dd/MMM/yyyy')}"></td>
+					<td th:text="${voo.precoDoVoo}"></td>
+					<td th:text="${voo.capacidadeDoVoo}"></td>
 					<td>
 						<div class="btn-group" role="group" aria-label="...">
 							<button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
