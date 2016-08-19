@@ -41,35 +41,56 @@
 
 							<form th:action="@{/pesquisar}" method="post"
 								th:object="${pesquisarDto}" class=" form-inline">
-								<div class="form-group">
 
-									<input id="data" type="text" class="form-control"
-										placeholder="Adicione uma data"
-										th:field="*{data}" />
+
+								<div class="alert  alert-danger  alert-dismissible" role="alert"
+									th:if="${#fields.hasAnyErrors()}">
+									<button type="button" class="close" data-dismiss="alert"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<th:block th:each="erro : ${#fields.detailedErrors()}">
+										<div>
+											<i class="fa  fa-exclamation-circle"></i> <span
+												th:text="${erro.message}"></span>
+										</div>
+									</th:block>
 
 								</div>
-								<div class="form-group">
-									<select name="origem" id="origem" class="form-control"
-										th:field="*{cidadeOrigem}">
-										<option value="" >Cidade Origem</option>
-										<option th:each="cidade : ${cidadeList}"
-											th:value="${cidade.id}"
-											th:text="|${cidade.dsNome} - ${cidade.sigla}| "></option>
-									</select>
-								</div>
-								<div class="form-group">
-									<select name="" id="" class="form-control"
-									th:field="*{cidadeDestino}">
-										<option value="" >Cidade Destino</option>
-										<option th:each="cidade : ${cidadeList}"
-											th:value="${cidade.id}"
-										th:text="|${cidade.dsNome} - ${cidade.sigla}| "></option>
-									</select>
-								</div>
-								<input type="submit" class="btn" value="Search" />
 
+									<div class="form-group"
+										th:classappend="${#fields.hasErrors('data')} ? has-error">
 
+										<input id="data" type="text" class="form-control"
+											placeholder="Adicione uma data" th:field="*{data}" />
+
+									</div>
+
+									<div class="form-group"
+										th:classappend="${#fields.hasErrors('cidadeOrigem')} ? has-error">
+										<select name="origem" id="origem" class="form-control"
+											th:field="*{cidadeOrigem}">
+											<option value="">Cidade Origem</option>
+											<option th:each="cidade : ${cidadeList}"
+												th:value="${cidade.id}"
+												th:text="|${cidade.dsNome} - ${cidade.sigla}| "></option>
+										</select>
+									</div>
+
+									<div class="form-group"
+										th:classappend="${#fields.hasErrors('cidadeDestino')} ? has-error">
+										<select name="" id="" class="form-control"
+											th:field="*{cidadeDestino}">
+											<option value="">Cidade Destino</option>
+											<option th:each="cidade : ${cidadeList}"
+												th:value="${cidade.id}"
+												th:text="|${cidade.dsNome} - ${cidade.sigla}| "></option>
+										</select>
+									</div>
+
+									<input type="submit" class="btn" value="Search" />
 							</form>
+
 						</div>
 					</div>
 				</div>
@@ -79,40 +100,40 @@
 	</section>
 
 
-	<section layout:fragment="conteudo">
+	<section layout:fragment="conteudo" th:if="${flTabela}">
 		<div class="content-area">
 			<h1>
 				<small>Voo</small>
 			</h1>
 
 			<div class="panel panel-default">
-			<!-- Table -->
-			<table class="table">
-				<tr>
-					<th>Número do voo</th>
-					<th>Origem / Destino</th>
-					<th>Data do voo</th>
-					<th>Preço</th>
-					<th>Quantidade de assentos</th>
-					<th>Ações</th>
-				</tr>
-				<tr th:each="voo: ${vooList}">
-					<td th:text="${voo.id}"></td>
-					<td th:text="| ${voo.origem.dsNome} / ${voo.destino.dsNome}|"></td>
-					<td th:text="${#calendars.format(voo.dataPartida, 'dd/MMM/yyyy')}"></td>
-					<td th:text="| R$ ${voo.preco}|"></td>
-					<td th:text="${voo.aeronave.qtdAssento}|"></td>
-					<td>
-						<div class="btn-group" role="group" aria-label="...">
-							<a class="fa fa-search btn"></a> 
-						</div>
-					</td>
-				</tr>
-				<tr th:if="${vooList.empty}">
-					<td colspan="6">Nenhum voo cadastrado</td>
-				</tr>
-			</table>
-		</div>
+				<!-- Table -->
+				<table class="table">
+					<tr>
+						<th>Número do voo</th>
+						<th>Origem / Destino</th>
+						<th>Data do voo</th>
+						<th>Preço</th>
+						<th>Quantidade de assentos</th>
+						<th>Ações</th>
+					</tr>
+					<tr th:each="voo: ${vooList}">
+						<td th:text="${voo.id}"></td>
+						<td th:text="| ${voo.origem.dsNome} / ${voo.destino.dsNome}|"></td>
+						<td th:text="${#calendars.format(voo.dataPartida, 'dd/MMM/yyyy')}"></td>
+						<td th:text="| R$ ${voo.preco}|"></td>
+						<td th:text="${voo.aeronave.qtdAssento}|"></td>
+						<td>
+							<div class="btn-group" role="group" aria-label="...">
+								<a class="fa fa-search btn"></a>
+							</div>
+						</td>
+					</tr>
+					<tr th:if="${vooList.empty}">
+						<td colspan="6">Nenhum voo cadastrado</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</section>
 
