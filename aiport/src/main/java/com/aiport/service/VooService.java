@@ -1,7 +1,6 @@
 package com.aiport.service;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +21,7 @@ public class VooService implements Serializable{
 	}
 	
 	public List<Voo> listar(){
-		List<Voo> retorno = new ArrayList<>();
-		for(Voo v: vooRepository.findAll()) {
-			retorno.add(v);
-		}
-		return retorno;
+		return (List<Voo>) vooRepository.findAll();
 	}
 	
 	public void save(Voo voo){
