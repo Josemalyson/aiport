@@ -44,7 +44,6 @@ public class UsuarioController {
 	public ModelAndView novo(Usuario usuario) {
 		modelAndView = new ModelAndView("/paginas/usuario/usuario");
 		listarTipoDeDocumento(modelAndView);
-		modelAndView.addObject("exibir", false);
 		return modelAndView;
 	}
 

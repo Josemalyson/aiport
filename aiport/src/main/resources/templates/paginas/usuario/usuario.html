@@ -58,12 +58,19 @@
 						<div class="row">
 
 							<div class="col-sm-4 form-group"
+								th:classappend="${#fields.hasErrors('dataNascimento')} ? has-error">
+								<label for="data" class="control-label">Data de
+									Nascimento</label> <input id="data" type="text"
+									th:field="*{dataNascimento}" class="form-control" />
+							</div>
+
+							<div class="col-sm-4 form-group"
 								th:classappend="${#fields.hasErrors('tipoDocumento')} ? has-error">
 
 								<label for="tipoDocumento" class="control-label">Tipo de
 									documento</label> <select id="tipoDocumento"
 									class="form-control control-label"
-									th:field="*{tipoDocumento.id}" onchange="atualizar();" >
+									th:field="*{tipoDocumento.id}" onchange="atualizar();">
 									<option value="">Selecione o tipo</option>
 									<option th:each="tipoDocumento : ${tipoDocumentoList}"
 										th:value="${tipoDocumento.id}"
@@ -73,23 +80,15 @@
 							</div>
 
 
-								<div class="col-sm-4 form-group"
-									th:classappend="${#fields.hasErrors('numeroDocumento')} ? has-error" >
-									
-									<div id="idDocumento" >
-										<label id="a" for="cpf" class="control-label" >ttttt</label> 
-									</div>
-									<input id="cpf" type="text" class="form-control" th:field="*{numeroDocumento}" />
-								</div>
-
-
 							<div class="col-sm-4 form-group"
-								th:classappend="${#fields.hasErrors('dataNascimento')} ? has-error">
-								<label for="data" class="control-label">Data de
-									Nascimento</label> <input id="data" type="text"
-									th:field="*{dataNascimento}" class="form-control" />
-							</div>
+								th:classappend="${#fields.hasErrors('numeroDocumento')} ? has-error">
 
+								<div id="idDocumento">
+									<label id="a" for="cpf" class="control-label">Numero</label> <input
+										id="cpf" type="text" class="form-control"
+										th:field="*{numeroDocumento}" />
+								</div>
+							</div>
 						</div>
 
 						<div class="row">
@@ -176,7 +175,6 @@
 
 						<div class="form-group">
 							<button id="salvar" class="btn  btn-primary" type="submit">Salvar</button>
-							<button class="btn  btn-danger">Cancelar</button>
 						</div>
 					</div>
 				</div>
