@@ -103,8 +103,8 @@
 
 								<div class="col-sm-4 form-group"
 									th:classappend="${#fields.hasErrors('quilometragem')} ? has-error">
-									<label for="data" class="control-label">Distancia em km</label> <input
-										id="data" type="text" th:field="*{quilometragem}"
+									<label for="quilometragem" class="control-label">Distancia em km</label> <input
+										id="quilometragem" type="text" th:field="*{quilometragem}"
 										class="form-control" />
 								</div>
 
@@ -114,8 +114,8 @@
 							
 								<div class="col-sm-4 form-group"
 									th:classappend="${#fields.hasErrors('preco')} ? has-error">
-									<label for="data" class="control-label">Preço por passageiro</label> <input
-										id="data" type="text" th:field="*{preco}"
+									<label for="preco" class="control-label">Preço por passageiro</label> <input
+										id="preco" type="text" th:field="*{preco}"
 										class="form-control" />
 								</div>
 								
@@ -128,8 +128,8 @@
 								
 								<div class="col-sm-4 form-group"
 										th:classappend="${#fields.hasErrors('minutosDuracao')} ? has-error">
-										<label for="data" class="control-label">Duração</label> <input
-											id="data" type="text" th:field="*{minutosDuracao}"
+										<label for="minutosDuracao" class="control-label">Duração</label> <input
+											id="minutosDuracao" type="text" th:field="*{minutosDuracao}"
 											class="form-control" />
 								</div>
 							</div>
@@ -163,5 +163,6 @@
 		
 
 	</section>
+	
 </body>
 </html>

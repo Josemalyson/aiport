@@ -30,14 +30,6 @@ confirmarSenha.blur(function() {
 
 });
 
-$(function() {
-	jQuery(function($) {
-		$("#data").mask("99/99/9999", {
-			placeholder : "_"
-		});
-	});
-});
-
 function atualizar() {
 
 	if ($('#tipoDocumento').val() != '' && $('#tipoDocumento').val() != null) {
