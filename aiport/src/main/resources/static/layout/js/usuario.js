@@ -19,8 +19,27 @@ confirmarSenha.blur(function() {
 });
 
 $(function() {
-	jQuery(function($){
-		   $("#data").mask("99/99/9999",{placeholder:" "});
+	jQuery(function($) {
+		$("#data").mask("99/99/9999", {
+			placeholder : "_"
 		});
+	});
 	$("#data").datepicker();
 });
+
+function atualizar() {
+
+	if ($('#tipoDocumento').val() != '' && $('#tipoDocumento').val() != null) {
+		
+		if ($('#tipoDocumento').val() == 1) {
+			$("#a").text("Numero do CPF");
+			$("#cpf").mask("999.999.999-99", {
+				placeholder : "_"
+			});
+			
+		} else {
+			$("#a").text("Numero do RG");
+			$("#cpf").mask("99.999.9-9", {placeholder : "_"});
+		}
+	}
+}

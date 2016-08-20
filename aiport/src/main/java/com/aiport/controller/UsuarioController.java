@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.aiport.entity.TipoDocumento;
 import com.aiport.entity.Usuario;
 import com.aiport.service.TipoDocumentoService;
 import com.aiport.service.UsuarioService;
@@ -29,17 +30,19 @@ public class UsuarioController {
 
 	@Autowired
 	private TipoDocumentoService tipoDocumentoService;
+	
+	private ModelAndView modelAndView;
 
 	@RequestMapping
 	public ModelAndView redirecionar() {
-		ModelAndView modelAndView = new ModelAndView("/paginas/usuario/listarUsuario");
+		modelAndView = new ModelAndView("/paginas/usuario/listarUsuario");
 		modelAndView.addObject("usuarios", usuarioService.findaAll());
 		return modelAndView;
 	}
 
 	@RequestMapping("/novo")
 	public ModelAndView novo(Usuario usuario) {
-		ModelAndView modelAndView = new ModelAndView("/paginas/usuario/usuario");
+		modelAndView = new ModelAndView("/paginas/usuario/usuario");
 		listarTipoDeDocumento(modelAndView);
 		modelAndView.addObject("exibir", false);
 		return modelAndView;
@@ -74,7 +77,7 @@ public class UsuarioController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ModelAndView editar(@PathVariable("id") Usuario usuario){
-		ModelAndView modelAndView = new ModelAndView("/paginas/usuario/usuario");
+		modelAndView = new ModelAndView("/paginas/usuario/usuario");
 		modelAndView.addObject("usuario", usuario);
 		modelAndView.addObject("exibir", true);
 		listarTipoDeDocumento(modelAndView);
@@ -87,4 +90,16 @@ public class UsuarioController {
 		return new ModelAndView("redirect:/usuario");
 	}
 
+	@RequestMapping(value = "/renderizar/{codigo}", method = RequestMethod.GET)
+	public String renderizarCPFoutRG(@PathVariable("codigo") TipoDocumento tipoDocumento){
+		
+		if(tipoDocumento.getId() == 1){
+			modelAndView = new ModelAndView("/paginas/usuario/usuario");
+			modelAndView.addObject("label", "CPF");
+		}else {
+			modelAndView.addObject("label", "RG");
+		}
+		
+		return "/paginas/usuario/usuario :: #idDocumento";
+	}
 }
