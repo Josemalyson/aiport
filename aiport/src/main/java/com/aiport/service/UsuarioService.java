@@ -22,25 +22,29 @@ public class UsuarioService {
 
 	@Autowired
 	private PerfilUsuarioService perfilUsuarioService;
-	
+
 	@Autowired
 	private MascaraUtil mascaraUtil;
 
 	@Transactional
 	public void save(Usuario usuario) {
 
-		usuario.setCartaoMilha(cartaoMilhasService.getNumeroCartaoMilha());
+		if (usuario.getId() != null) {
+			usuarioRepository.save(usuario);
+		} else {
+			usuario.setCartaoMilha(cartaoMilhasService.getNumeroCartaoMilha());
 
-		usuario.setPerfil(perfilUsuarioService.findOnePerfilUsuario(PerfilUsuarioEnum.PUBLIC));
-		
-		
-		if(usuario.getNumeroDocumento() != null){
-			String descricaoSemMascara = mascaraUtil.removerMascara(usuario.getNumeroDocumento());
-			usuario.setNumeroDocumento(descricaoSemMascara);
-		}else {
-			usuario.setNumeroDocumento(null);
+			usuario.setPerfil(perfilUsuarioService.findOnePerfilUsuario(PerfilUsuarioEnum.PUBLIC));
+
+			if (usuario.getNumeroDocumento() != null) {
+				String descricaoSemMascara = mascaraUtil.removerMascara(usuario.getNumeroDocumento());
+				usuario.setNumeroDocumento(descricaoSemMascara);
+			} else {
+				usuario.setNumeroDocumento(null);
+			}
+			usuarioRepository.save(usuario);
 		}
-		usuarioRepository.save(usuario);
+
 	}
 
 	public List<Usuario> findaAll() {

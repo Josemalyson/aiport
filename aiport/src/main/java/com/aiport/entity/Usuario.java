@@ -39,7 +39,6 @@ public class Usuario implements Serializable {
 	private String numeroDocumento;
 	
 	@Column(name = "DT_NASCIMENTO", nullable = false)
-	@NotNull(message = "Data de Nascimento obrigatório")
 	private Date dataNascimento;
 
 	@ManyToOne

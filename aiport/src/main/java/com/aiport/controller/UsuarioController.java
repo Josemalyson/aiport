@@ -3,13 +3,17 @@ package com.aiport.controller;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Date;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,6 +58,25 @@ public class UsuarioController {
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public ModelAndView salvar(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) {
 
+		validandoData(usuario, result);
+		
+		if (result.hasErrors()) {
+			return novo(usuario);
+		}
+	
+		
+		try {
+			usuarioService.save(usuario);
+		} catch (ConstraintViolationException e) {
+			result.addError(new FieldError("usuario","login.nomeUsuario",e.getMessage()));
+			return novo(usuario);
+		}
+		
+		return new ModelAndView("redirect:/usuario");
+
+	}
+
+	private void validandoData(Usuario usuario, BindingResult result) {
 		if (usuario.getDataNascimento() != null ) {
 			LocalDate localDate = LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(usuario.getDataNascimento()));
 			Period period = Period.between(localDate, LocalDate.now());
@@ -62,16 +85,10 @@ public class UsuarioController {
 				usuario.setDataNascimento(null);
 				result.addError(new FieldError("usuario","dataNascimento","Menor de Idade"));
 			}
+		}else{
+			usuario.setDataNascimento(null);
+			result.addError(new FieldError("usuario","dataNascimento","Campo Data de nascimento obrigatório"));
 		}
-		
-		if (result.hasErrors()) {
-			return novo(usuario);
-		}
-	
-		usuarioService.save(usuario);
-		
-		return new ModelAndView("redirect:/usuario");
-
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
