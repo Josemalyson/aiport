@@ -8,7 +8,28 @@
 <head>
 <title>Listar Voo</title>
 </head>
+<script>
+function sendData()
+{
+        $.ajax(
+        {
+            type: "GET",
+            data: $("#valorIdVO").value,
+            cache: false,
+            url: "/voo/editar/"data,
+            success: function(data) 
+            {
+                alert("Your changes have been saved");
+            },
+            error: function()
+            {
+                alert("Error - Data not saved");
+            }
 
+        });
+}
+
+</script>
 <body>
 	<section layout:fragment="slide">
 		<div class="page-header">
@@ -41,15 +62,15 @@
 					<th>Ações</th>
 				</tr>
 				<tr th:each="vooVO: ${voos}">
-					<td th:text="${vooVO.numeroDoVoo}"></td>
+					<td th:text="${vooVO.id}" id="valorIdVO"></td>
 					<td th:text="${vooVO.origemDestino}"></td>
 					<td th:text="${#calendars.format(vooVO.horaDoVoo, 'dd/MMM/yyyy')}"></td>
 					<td th:text="${vooVO.precoDoVoo}"></td>
 					<td th:text="${vooVO.capacidadeDoVoo}"></td>
 					<td>
 						<div class="btn-group" role="group" aria-label="...">
-							<button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-							<button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+							<a class="fa fa-pencil btn"	data-toggle="modal"  data-target="#modalAdicionaEdita" th:href="@{/voo/editar/{id}(id=${vooVO.id})}"></a> 
+							<a	class="fa fa-trash btn" th:href="@{/voo/excluir/{id}(id=${vooVO.id})}"></a>
 						</div>
 					</td>
 				</tr>

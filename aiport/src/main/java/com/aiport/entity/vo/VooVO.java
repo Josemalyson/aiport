@@ -4,18 +4,18 @@ import java.util.Date;
 
 public class VooVO {
 	
-	private String numeroDoVoo;
+	private Long id;
 	private String origemDestino;
 	private Date horaDoVoo;
 	private String precoDoVoo;
 	private int capacidadeDoVoo;
 	
 	
-	public String getNumeroDoVoo() {
-		return numeroDoVoo;
+	public Long getId() {
+		return id;
 	}
-	public void setNumeroDoVoo(String numeroDoVoo) {
-		this.numeroDoVoo = numeroDoVoo;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getOrigemDestino() {
 		return origemDestino;

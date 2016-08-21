@@ -36,7 +36,7 @@ public class VooService implements Serializable{
 		
 		for (Voo voo : listaVoo) {
 			VooVO vooVO = new VooVO();
-			vooVO.setNumeroDoVoo(voo.getId().toString());
+			vooVO.setId(voo.getId());
 			vooVO.setOrigemDestino(voo.getOrigem().getDsNome()+" / "+voo.getDestino().getDsNome());
 			vooVO.setHoraDoVoo(voo.getDataPartida());
 			vooVO.setPrecoDoVoo("R$ "+voo.getPreco().toString());
@@ -45,5 +45,13 @@ public class VooService implements Serializable{
 		}
 		
 		return listaVooVO;
+	}
+	
+	public void excluir(VooVO vooVO){
+		vooRepository.delete(getVooPorId(vooVO));
+	}
+	
+	public Voo getVooPorId(VooVO vooVO){
+		return vooRepository.findOne(vooVO.getId());
 	}
 }
