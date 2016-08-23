@@ -14,6 +14,7 @@ import com.aiport.repository.CidadeRepository;
 public class CidadeService implements Serializable{
 
 	private static final long serialVersionUID = -7391851270295621774L;
+
 	@Autowired
 	private CidadeRepository cidadeRepository;
 	

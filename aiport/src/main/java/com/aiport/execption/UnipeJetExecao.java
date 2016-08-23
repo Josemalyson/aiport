@@ -17,14 +17,14 @@ public class UnipeJetExecao extends RuntimeException {
 
 	public UnipeJetExecao() {
 		super();
-		this.mensagemList = new ArrayList<String>();
+		this.mensagemList = new ArrayList<>();
 		this.message = new String();
 		
 	}
 	
 	public UnipeJetExecao(String mensagem){
 		this.message = mensagem;
-		this.mensagemList = new ArrayList<String>();
+		this.mensagemList = new ArrayList<>();
 	}
 	
 	public UnipeJetExecao(List<String> mensagemList) {
